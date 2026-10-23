@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f7fb">
+  <meta name="description" content="AI-powered study tools for students.">
+  <title>AI StudyMate by Bilal | AI Study Tools</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script defer src="/script.js"></script>
+
+  <style>
+    /* Larger website branding */
+    .brand {
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      gap: 10px;
+    }
+
+    .brand > span:last-child {
+      display: inline-flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .brand small {
+      font-size: 0.78em;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .brand-icon {
+      font-size: 1.7em;
+      flex-shrink: 0;
+    }
+
+    /* Quiz selector can contain all question counts */
+    #quizCount {
+      width: 100%;
+      min-height: 46px;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .brand {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="AI StudyMate by Bilal home">
+      <span class="brand-icon">✦</span>
+      <span>AI StudyMate <small>by Bilal</small></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#tools">Study Tools</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <button id="themeToggle" class="theme-toggle" type="button"
+      aria-label="Switch theme" title="Switch light/dark theme">
+      <span id="themeIcon">🌙</span>
+      <span id="themeLabel">Dark mode</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero section" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="status-dot"></span>
+          YOUR PERSONAL AI STUDY PARTNER
+        </div>
+
+        <h1>Study smarter.<br><span>Achieve more.</span></h1>
+
+        <p>
+          Your learning companion for questions, quizzes, summaries,
+          PDF notes and assignments—all in one place.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#tools">
+            Explore study tools <span>→</span>
+          </a>
+          <a class="btn btn-secondary" href="#chat">
+            Ask AI a question
+          </a>
+        </div>
+
+        <div class="hero-note">
+          <span>✦</span> Made for curious minds and ambitious students
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Study dashboard preview">
+        <div class="visual-orbit orbit-one"></div>
+        <div class="visual-orbit orbit-two"></div>
+        <div class="visual-center">✦</div>
+
+        <div class="floating-card float-top">
+          <span class="mini-icon blue">✎</span>
+          <span>
+            <strong>Learn anything</strong>
+            <small>One question at a time</small>
+          </span>
+        </div>
+
+        <div class="floating-card float-bottom">
+          <span class="mini-icon purple">✓</span>
+          <span>
+            <strong>Stay prepared</strong>
+            <small>Practice and revise</small>
+          </span>
+        </div>
+
+        <span class="sparkle sparkle-one">✦</span>
+        <span class="sparkle sparkle-two">✧</span>
+      </div>
+    </section>
+
+    <section class="section tools-section" id="tools">
+      <div class="section-heading">
+        <div class="eyebrow">YOUR LEARNING TOOLKIT</div>
+        <h2>Everything you need to <span>learn better.</span></h2>
+        <p>Choose a tool and get started with your studies.</p>
+      </div>
+
+      <div class="tool-grid">
+        <a class="tool-card" href="#chat">
+          <span class="tool-icon icon-blue">✧</span>
+          <h3>AI Chat Assistant</h3>
+          <p>Ask questions and understand difficult concepts in simple words.</p>
+          <span class="card-link">Ask a question <b>→</b></span>
+        </a>
+
+        <a class="tool-card" href="#quiz">
+          <span class="tool-icon icon-purple">▤</span>
+          <h3>Quiz Generator</h3>
+          <p>Create up to 100 multiple-choice questions to practise for your exams.</p>
+          <span class="card-link">Create a quiz <b>→</b></span>
+        </a>
+
+        <a class="tool-card" href="#summarizer">
+          <span class="tool-icon icon-green">≡</span>
+          <h3>Text Summarizer</h3>
+          <p>Turn long notes into clear summaries and revision points.</p>
+          <span class="card-link">Summarize notes <b>→</b></span>
+        </a>
+
+        <a class="tool-card" href="#pdf">
+          <span class="tool-icon icon-orange">▧</span>
+          <h3>PDF Assistant</h3>
+          <p>Upload a text-based PDF and ask questions about its content.</p>
+          <span class="card-link">Explore a PDF <b>→</b></span>
+        </a>
+
+        <a class="tool-card" href="#assignment">
+          <span class="tool-icon icon-pink">✎</span>
+          <h3>Assignment Help</h3>
+          <p>Organize ideas, create outlines and build a structured draft.</p>
+          <span class="card-link">Start an assignment <b>→</b></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section workspace-section" id="chat">
+      <div class="section-heading left-heading">
+        <div class="eyebrow">01 · ASK ANYTHING</div>
+        <h2>AI Chat <span>Assistant</span></h2>
+        <p>Ask a question, explore a concept or request a simple explanation.</p>
+      </div>
+
+      <div class="workspace-card">
+        <label for="chatMessage">What would you like to learn?</label>
+        <textarea id="chatMessage" rows="4"
+          placeholder="Example: Explain artificial intelligence in simple words..."></textarea>
+
+        <div class="form-footer">
+          <span class="hint">Tip: Tell the AI your subject and level.</span>
+          <button class="btn btn-primary" id="chatBtn">Ask AI →</button>
+        </div>
+
+        <div class="result" id="chatResult" aria-live="polite" hidden></div>
+      </div>
+    </section>
+
+    <section class="section workspace-section" id="quiz">
+      <div class="section-heading left-heading">
+        <div class="eyebrow">02 · TEST YOUR KNOWLEDGE</div>
+        <h2>Quiz <span>Generator</span></h2>
+        <p>Generate 1 to 100 practice MCQs on any subject or topic.</p>
+      </div>
+
+      <div class="workspace-card">
+        <label for="quizTopic">Topic or subject</label>
+        <input id="quizTopic" type="text"
+          placeholder="Example: Programming fundamentals">
+
+        <label for="quizCount">Number of questions (maximum 100)</label>
+        <select id="quizCount">
+          <option value="5">5 questions</option>
+          <option value="10">10 questions</option>
+          <option value="15">15 questions</option>
+          <option value="20">20 questions</option>
+          <option value="25">25 questions</option>
+          <option value="30">30 questions</option>
+          <option value="40">40 questions</option>
+          <option value="50">50 questions</option>
+          <option value="60">60 questions</option>
+          <option value="75">75 questions</option>
+          <option value="100">100 questions</option>
+        </select>
+
+        <div class="form-footer">
+          <span class="hint">Answers and explanations are included.</span>
+          <button class="btn btn-primary" id="quizBtn">Generate quiz →</button>
+        </div>
+
+        <div class="result" id="quizResult" aria-live="polite" hidden></div>
+      </div>
+    </section>
+
+    <section class="section workspace-section" id="summarizer">
+      <div class="section-heading left-heading">
+        <div class="eyebrow">03 · SIMPLIFY YOUR NOTES</div>
+        <h2>Text <span>Summarizer</span></h2>
+        <p>Get the main ideas, important points and key definitions from your text.</p>
+      </div>
+
+      <div class="workspace-card">
+        <label for="summaryText">Paste your study material</label>
+        <textarea id="summaryText" rows="7"
+          placeholder="Paste your chapter, lecture notes or study text here..."></textarea>
+
+        <div class="form-footer">
+          <span class="hint">Maximum 45,000 characters.</span>
+          <button class="btn btn-primary" id="summarizeBtn">Summarize text →</button>
+        </div>
+
+        <div class="result" id="summaryResult" aria-live="polite" hidden></div>
+      </div>
+    </section>
+
+    <section class="section workspace-section" id="pdf">
+      <div class="section-heading left-heading">
+        <div class="eyebrow">04 · LEARN FROM YOUR DOCUMENTS</div>
+        <h2>PDF <span>Assistant</span></h2>
+        <p>Upload your PDF, then ask a question about its extracted text.</p>
+      </div>
+
+      <div class="workspace-card">
+        <label for="pdfFile">Choose a PDF file</label>
+
+        <div class="upload-box">
+          <span class="upload-symbol">⇧</span>
+          <strong>Upload your study notes</strong>
+          <p>Text-based PDF only · Maximum 3 MB</p>
+          <input id="pdfFile" type="file" accept="application/pdf,.pdf">
+        </div>
+
+        <div id="pdfStatus" class="hint pdf-status" aria-live="polite">
+          No PDF selected.
+        </div>
+
+        <label for="pdfQuestion">Your question about this PDF</label>
+        <textarea id="pdfQuestion" rows="3"
+          placeholder="Example: What are the main points in this document?"></textarea>
+
+        <div class="form-footer">
+          <span class="hint">Scanned/image-only PDFs may not extract text.</span>
+          <button class="btn btn-primary" id="pdfAskBtn" disabled>
+            Ask about PDF →
+          </button>
+        </div>
+
+        <div class="result" id="pdfResult" aria-live="polite" hidden></div>
+      </div>
+    </section>
+
+    <section class="section workspace-section" id="assignment">
+      <div class="section-heading left-heading">
+        <div class="eyebrow">05 · PLAN YOUR WORK</div>
+        <h2>Assignment <span>Help</span></h2>
+        <p>Build a structured draft that you can review and improve yourself.</p>
+      </div>
+
+      <div class="workspace-card">
+        <label for="assignmentTopic">Assignment topic</label>
+        <input id="assignmentTopic" type="text"
+          placeholder="Example: Applications of artificial intelligence">
+
+        <label for="assignmentInstructions">Teacher's instructions (optional)</label>
+        <textarea id="assignmentInstructions" rows="4"
+          placeholder="Word count, required headings, subject, citation style..."></textarea>
+
+        <div class="form-footer">
+          <span class="hint">Review facts and follow your university's rules.</span>
+          <button class="btn btn-primary" id="assignmentBtn">Create draft →</button>
+        </div>
+
+        <div class="result" id="assignmentResult" aria-live="polite" hidden></div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="about-mark">✦</div>
+      <div>
+        <div class="eyebrow">ABOUT THE PROJECT</div>
+        <h2>Better learning, <span>one step at a time.</span></h2>
+        <p>
+          AI StudyMate by Bilal brings useful AI study tools into one
+          student-friendly workspace. Use it to practise, understand and
+          organize your learning.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand footer-brand" href="#home">
+      <span class="brand-icon">✦</span>
+      <span>AI StudyMate <small>by Bilal</small></span>
+    </a>
+    <p>Built to support your learning journey.</p>
+    <a href="#home">Back to top ↑</a>
+  </footer>
+</body>
+</html>
